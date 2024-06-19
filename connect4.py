@@ -80,7 +80,7 @@ def evaluate_window(window, piece):
 
 
 def score_position(board, piece):
-    score = 0
+    score = -10000000000
 
     ## Score center column
     center_array = [int(i) for i in list(board[:, COLUMN_COUNT//2])]
@@ -113,6 +113,24 @@ def score_position(board, piece):
             score += evaluate_window(window, piece)
 
     return score
+
+# def is_terminal_node(board):
+#     return winning_move(board, PLAYER_PIECE) or winning_move(board, AI_PIECE) or len(get_valid_locations(board)) == 0
+
+# def minimax(board, debth, maximizingPlayer):
+#     valid_locations = get_valid_locations(board)
+#     is_terminal = is_terminal_node(board)
+#     if depth == 0 or is_terminal:
+#         if is_terminal:
+#             if winning_move(board, AI_PIECE):
+#                 return 1000000000000000000000
+#             elif winning_move(board, AI_PIECE):
+#                 return -1000000000000000000000
+#             else: # Game is over, no more valid moves
+#                 return 0
+#         else:
+#             return score_position(board, AI_PIECE)
+    
 
 def get_valid_locations(board):
     valid_locations = []
